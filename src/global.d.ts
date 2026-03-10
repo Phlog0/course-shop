@@ -1,0 +1,14 @@
+declare module "*.scss" {
+  const classes: { [key: string]: string };
+  export default classes;
+}
+declare module "*.png";
+declare module "*.svg" {
+  import React from "react";
+  const SVG: React.FC<React.SVGProps<SVGSVGElement>>;
+  export default SVG;
+}
+declare module "*.jpeg";
+declare module "*.jpg";
+
+declare const __PLATFORM__: "desktop" | "mobile";
