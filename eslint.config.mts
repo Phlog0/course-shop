@@ -3,7 +3,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
 import { defineConfig, globalIgnores } from "eslint/config";
-
+import i18next from "eslint-plugin-i18next";
 export default defineConfig([
   globalIgnores(["./build/**", "./vscode/**", "node_modules/*"]),
   {
@@ -15,6 +15,17 @@ export default defineConfig([
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
   pluginReact.configs.flat["jsx-runtime"],
+
+  {
+    files: ["**/*.{js,jsx,ts,tsx}"],
+    plugins: {
+      i18next,
+    },
+    rules: {
+      "i18next/no-literal-string": "error",
+    },
+  },
+
   {
     rules: {
       "@typescript-eslint/no-unused-vars": [
