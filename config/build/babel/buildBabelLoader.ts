@@ -17,7 +17,7 @@ export function buildBabelLoader({ mode }: BuildOptions) {
   }
   return {
     presets: [
-      "@babel/preset-env",
+      ["@babel/preset-env", { targets: { node: "current" } }],
       "@babel/preset-typescript",
       [
         "@babel/preset-react",
