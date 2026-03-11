@@ -2,6 +2,6 @@ interface AboutProps {
   className?: string;
 }
 
-export default function About({}: AboutProps) {
+export default function AboutPage({}: AboutProps) {
   return <div>About</div>;
 }

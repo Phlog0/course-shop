@@ -33,6 +33,7 @@ export function buildPlugins({
     plugins.push(
       new MiniCssExtractPlugin({
         filename: "css/[name].[contenthash:8].css",
+        // Можно файл разбивать на асинхронные файлики
         chunkFilename: "css/[name].[contenthash:8].css",
       }),
     );

@@ -5,7 +5,7 @@ import type { Configuration } from "webpack";
 import { ProgressPlugin } from "webpack";
 
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import { buildWebpack } from "./config/build/buildWebpack";
+import { buildWebpackConfig } from "./config/build/buildWebpack";
 import {
   BuildMode,
   BuildPaths,
@@ -26,7 +26,7 @@ export default (env: EnvVariables) => {
     src: path.resolve(__dirname, "src"),
   };
 
-  const config: Configuration = buildWebpack({
+  const config: Configuration = buildWebpackConfig({
     mode: env.mode ?? "development",
     port: env.port ?? 3000,
     paths: buildPaths,

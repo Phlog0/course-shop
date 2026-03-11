@@ -1,36 +1,12 @@
-import { StrictMode, Suspense } from "react";
+import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
-import { App } from "@/components/App";
-import { createBrowserRouter, RouterProvider } from "react-router";
-import { About, Shop } from "@/pages";
 
-let router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/about",
-        element: (
-          <Suspense fallback="Загрузка About...">
-            <About />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/shop",
-        element: (
-          <Suspense fallback="Загрузка магазина...">
-            <Shop />
-          </Suspense>
-        ),
-      },
-    ],
-  },
-]);
-
+import { ThemeProvider } from "app/providers/Themeprovider";
+import { AppRouter } from "app/providers/Router";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <AppRouter />
+    </ThemeProvider>
   </StrictMode>,
 );

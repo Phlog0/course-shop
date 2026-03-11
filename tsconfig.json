@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    // это флаг не важен, так как сборка за счет вебпака производится
     "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "esnext",
@@ -8,10 +9,11 @@
     "allowJs": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
+    // чинит import * as package
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "*": ["./src/*"]
     }
   },
   "ts-node": {

@@ -4,7 +4,7 @@ import { buildLoaders } from "./buildLoaders";
 import { buildPlugins } from "./buildPlugins";
 import { buildResolvers } from "./buildResolvers";
 import { BuildOptions } from "./types/types";
-export function buildWebpack(options: BuildOptions): Configuration {
+export function buildWebpackConfig(options: BuildOptions): Configuration {
   const { mode, paths } = options;
   const isDev = options.mode === "development";
   return {

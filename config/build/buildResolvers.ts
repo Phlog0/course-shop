@@ -7,8 +7,11 @@ export function buildResolvers({
   return {
     // благодаря этой настройке не надо дописывать расширение файла при импорте
     extensions: [".tsx", ".ts", ".js"],
-    alias: {
-      "@": paths.src,
-    },
+    preferAbsolute: true,
+    modules: [paths.src, "node_modules"],
+    mainFiles: ["index"],
+    // alias: {
+    //   "@": paths.src,
+    // },
   };
 }
