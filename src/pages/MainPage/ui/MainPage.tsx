@@ -1,8 +1,7 @@
-import { useTheme } from "app/providers/Themeprovider";
-import { Link, Outlet } from "react-router-dom";
-import { classNames } from "shared/lib/classNames/classNames";
-import { AppRoutes } from "shared/routeConfig/routeConfig";
+import { useTranslation } from "react-i18next";
 
 export default function MainPage() {
-  return <div>main page</div>;
+  const { t } = useTranslation();
+
+  return <div>{t("Главная страница")}</div>;
 }

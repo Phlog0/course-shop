@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
 import { classNames } from "shared/lib/classNames/classNames";
-import { RoutePath } from "shared/routeConfig/routeConfig";
+import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import cls from "./Navbar.module.scss";
 import { AppLink, AppLinkTheme } from "shared/ui";
-import { ThemeSwitcher } from "widgets/ThemeSwitcher";
 interface NavbarProps {
   className?: string;
 }

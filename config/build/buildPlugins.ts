@@ -11,7 +11,6 @@ export function buildPlugins({
   mode,
   paths,
   analyzer,
-  platform,
 }: BuildOptions): Configuration["plugins"] {
   const isDev = mode === "development";
   const isProd = mode === "production";
@@ -22,7 +21,7 @@ export function buildPlugins({
       template: paths.html,
       favicon: path.resolve(paths.public, "favicon.ico"),
     }),
-    new DefinePlugin({ __PLATFORM__: JSON.stringify(platform) }),
+    new DefinePlugin({ __IS_DEV__: JSON.stringify(isDev) }),
   );
   if (isDev) {
     plugins.push(new ProgressPlugin());

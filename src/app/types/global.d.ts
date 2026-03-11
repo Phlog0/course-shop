@@ -11,4 +11,4 @@ declare module "*.svg" {
 declare module "*.jpeg";
 declare module "*.jpg";
 
-declare const __PLATFORM__: "desktop" | "mobile";
+declare const __IS_DEV__: boolean;

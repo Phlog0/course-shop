@@ -3,9 +3,9 @@ import { AboutPage } from "pages/AboutPage";
 import { MainPage } from "pages/MainPage";
 import { Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { RoutePath } from "shared/routeConfig/routeConfig";
+import { RoutePath } from "shared/config/routeConfig/routeConfig";
 
-let router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     element: <App />,
     path: RoutePath.main,

@@ -14,10 +14,12 @@ export function Button({
   className,
   children,
   theme,
+  type = "button",
   ...otherProps
 }: PropsWithChildren<ButtonProps>) {
   return (
     <button
+      type={type}
       className={classNames(cls.button, {}, [className, cls[theme]])}
       {...otherProps}
     >
