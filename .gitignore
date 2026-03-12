@@ -4,3 +4,6 @@ progress.md
 
 *.env*
 
+
+*storybook.log
+storybook-static

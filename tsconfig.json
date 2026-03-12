@@ -7,7 +7,7 @@
     "target": "es5",
     "jsx": "react-jsx",
     "allowJs": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     // чинит import * as package
     "allowSyntheticDefaultImports": true,
