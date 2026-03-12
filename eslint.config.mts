@@ -46,6 +46,7 @@ export default defineConfig([
           ignoreRestSiblings: true,
         },
       ],
+      "react/display-name": "off",
     },
   },
 ]);

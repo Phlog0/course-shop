@@ -21,5 +21,10 @@
       "module": "commonjs"
     }
   },
-  "include": ["src", "global.d.ts", "./config/jest/setupTests.ts"]
+  "include": [
+    "src",
+    "global.d.ts",
+    "./config/jest/setupTests.ts",
+    "src/shared/storybook/decorators/StyleDecorator.tsx"
+  ]
 }

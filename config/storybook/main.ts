@@ -1,6 +1,8 @@
+import webpack, { RuleSetRule } from "webpack";
 import type { StorybookConfig } from "@storybook/react-webpack5";
 import path from "path";
 import { buildCssLoader } from "../build/loaders/buildCssLoader.ts";
+import { buildSvgLoader } from "../build/loaders/buildSvgLoader.ts";
 
 const config: StorybookConfig = {
   stories: ["../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -18,7 +20,6 @@ const config: StorybookConfig = {
   ],
   framework: "@storybook/react-webpack5",
   webpackFinal: async (config) => {
-    // Вместо __dirname используем path.resolve с правильным относительным путем
     const srcPath = path.resolve(process.cwd(), "src");
 
     config.resolve = config.resolve || {};
@@ -32,8 +33,18 @@ const config: StorybookConfig = {
 
     config.module = config.module || {};
     config.module.rules = config.module.rules || [];
+    const fileLoaderRule = config.module.rules.find(
+      (rule) =>
+        typeof rule !== "string" &&
+        rule?.test instanceof RegExp &&
+        rule.test.test(".svg"),
+    ) as RuleSetRule;
 
-    // Добавляем правило для SCSS
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = /\.svg$/;
+    }
+
+    config.module.rules.push(buildSvgLoader());
     config.module.rules.push(buildCssLoader(true));
 
     return config;
