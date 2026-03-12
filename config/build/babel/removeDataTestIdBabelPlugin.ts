@@ -5,7 +5,6 @@ export function removeDataTestIdBabelPlugin(): PluginItem {
     visitor: {
       Program(path, state) {
         const forbiddenProps = state.opts.props || [];
-        console.log({ forbiddenProps });
         path.traverse({
           JSXIdentifier(current) {
             const nodeName = current.node.name;

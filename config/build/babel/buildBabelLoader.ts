@@ -1,6 +1,5 @@
 import { BuildOptions } from "../types/types";
 import { removeDataTestIdBabelPlugin } from "./removeDataTestIdBabelPlugin";
-
 // babel работает с новым синтакисом JS(X), TS(X). До этого я использовал ts-loader. Существуют еще swc-loader, esbuild-loader
 export function buildBabelLoader({ mode }: BuildOptions) {
   const isDev = mode === "development";
@@ -15,6 +14,7 @@ export function buildBabelLoader({ mode }: BuildOptions) {
       },
     ]);
   }
+
   return {
     presets: [
       ["@babel/preset-env", { targets: { node: "current" } }],

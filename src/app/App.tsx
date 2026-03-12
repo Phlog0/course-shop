@@ -1,4 +1,3 @@
-import "./styles/index.scss";
 import { Outlet } from "react-router-dom";
 
 import { classNames } from "shared/lib/classNames/classNames";
@@ -7,21 +6,23 @@ import { Navbar } from "widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar";
 
 import { Suspense } from "react";
+import { PageLoader } from "widgets/PageLoader";
 
 export function App() {
   const { theme } = useTheme();
+
   return (
     <div data-testid="dataTestIdApp" className={classNames("app", {}, [theme])}>
-      <Suspense fallback="">
-        <Navbar />
+      <Navbar />
 
-        <div className="content-page">
-          <Sidebar />
-          <div className="page-wrapper">
+      <div className="content-page">
+        <Sidebar />
+        <div className="page-wrapper">
+          <Suspense fallback={<PageLoader />}>
             <Outlet />
-          </div>
+          </Suspense>
         </div>
-      </Suspense>
+      </div>
     </div>
   );
 }
