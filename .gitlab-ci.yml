@@ -1,0 +1,14 @@
+stages:
+  - unit-tests
+  - build
+
+typecheck:
+  stage: unit-tests
+  script:
+    - npm ci
+    - npm run test:unit
+
+build:
+  stage: build
+  script:
+    - npm run build
