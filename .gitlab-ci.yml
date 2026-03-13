@@ -1,24 +1,33 @@
 image: node:latest
-stages:
-  - build-stage
-  - test-stage
-  - deploy-stage
+
+variables:
+  NODE_ENV: production
 
 cache:
+  key:
+    files:
+      - package-lock.json
+    prefix: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules/
+  policy: pull-push
 
-install_dependencies_job:
-  stage: build-stage
+stages:
+  - install-stage
+  - validate-stage
+  - test-stage
+  - build-stage
+  - deploy-stage
+
+install_job:
+  stage: install-stage
   script:
-    - echo "Installing dependencies..."
-    - npm install
-  # Save node_modules as a cache for other jobs in the pipeline
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
-    policy: push # Only the install job should upload the cache
+    - npm ci
+
+lint_ts_job:
+  stage: validate-stage
+  script:
+    - npm run lint:ts
 
 test_job:
   stage: test-stage
