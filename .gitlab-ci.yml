@@ -1,14 +1,40 @@
+image: node:latest
 stages:
-  - unit-tests
-  - build
+  - build-stage
+  - test-stage
+  - deploy-stage
 
-typecheck:
-  stage: unit-tests
+cache:
+  paths:
+    - node_modules/
+
+install_dependencies_job:
+  stage: build-stage
   script:
-    - npm ci
+    - echo "Installing dependencies..."
+    - npm install
+  # Save node_modules as a cache for other jobs in the pipeline
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+    policy: push # Only the install job should upload the cache
+
+test_job:
+  stage: test-stage
+  script:
     - npm run test:unit
 
-build:
-  stage: build
+lint_job:
+  stage: test-stage
+  script:
+    - npm run lint:ts
+
+build_job:
+  stage: deploy-stage
   script:
     - npm run build
+  artifacts:
+    paths:
+      - build/
+    expire_in: 1 week
