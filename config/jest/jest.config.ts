@@ -37,7 +37,8 @@ const config: Config = {
   setupFilesAfterEnv: ["<rootDir>/config/jest/setupTests.ts"],
   moduleNameMapper: {
     "\\.(s?css)$": "identity-obj-proxy",
-    "\\.svg$": path.resolve(__dirname, "jestEmptyComponent.tsx"),
+    // "\\.svg$": path.resolve(__dirname, "jestEmptyComponent.tsx"),
+    "\\.svg$": "<rootDir>/config/jest/jestEmptyComponent.tsx",
   },
 
   // All imported modules in your tests should be mocked automatically
