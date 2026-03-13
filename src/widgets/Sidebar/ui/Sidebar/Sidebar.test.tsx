@@ -2,6 +2,7 @@ import { screen } from "@testing-library/react";
 import { renderWithTranslation } from "shared/lib/tests";
 import userEvent from "@testing-library/user-event";
 import { Sidebar } from "widgets/Sidebar";
+
 describe("Sidebar", () => {
   test("renders Sidebar", () => {
     renderWithTranslation(<Sidebar />);

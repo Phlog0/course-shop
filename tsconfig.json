@@ -25,6 +25,7 @@
     "src",
     "global.d.ts",
     "./config/jest/setupTests.ts",
-    "src/shared/storybook/decorators/StyleDecorator.tsx"
+    "src/shared/storybook/decorators/StyleDecorator.tsx",
+    "playwright-tests/MainPage.spec.ts"
   ]
 }

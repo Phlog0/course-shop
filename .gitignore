@@ -7,3 +7,12 @@ progress.md
 
 *storybook.log
 storybook-static
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/playwright-test-results/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/

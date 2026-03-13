@@ -5,8 +5,8 @@ export default function MainPage() {
   const { t } = useTranslation();
 
   return (
-    <div>
-      {t("Главная страница")}
+    <div data-testid="mainPage">
+      <h2>{t("Главная страница")}</h2>
 
       <BugButton />
     </div>
