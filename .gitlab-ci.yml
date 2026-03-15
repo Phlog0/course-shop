@@ -1,49 +1,41 @@
-image: node:latest
-
-variables:
-  NODE_ENV: production
-
-cache:
-  key:
-    files:
-      - package-lock.json
-    prefix: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
-  policy: pull-push
+default:
+  image: node:22-alpine
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+      - node_modules/
+    policy: pull-push
 
 stages:
   - install-stage
   - validate-stage
   - test-stage
   - build-stage
-  - deploy-stage
 
-install_job:
+install_dependencies_job:
   stage: install-stage
   script:
-    - npm ci
+    - npm ci --cache .npm --prefer-offline
 
 lint_ts_job:
   stage: validate-stage
   script:
     - npm run lint:ts
 
+lint_scss_job:
+  stage: validate-stage
+  script:
+    - npm run lint:scss
+
 test_job:
   stage: test-stage
   script:
     - npm run test:unit
 
-lint_job:
-  stage: test-stage
-  script:
-    - npm run lint:ts
-
 build_job:
-  stage: deploy-stage
+  stage: build-stage
   script:
-    - npm run build
-  artifacts:
-    paths:
-      - build/
-    expire_in: 1 week
+    - npm run build:prod

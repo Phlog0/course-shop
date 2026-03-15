@@ -4,7 +4,6 @@
  */
 
 import type { Config } from "jest";
-import path from "path";
 
 const config: Config = {
   // Automatically clear mock calls, instances, contexts and results before every test

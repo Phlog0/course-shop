@@ -1,9 +1,12 @@
-import webpack, { RuleSetRule } from "webpack";
+import { RuleSetRule } from "webpack";
 import type { StorybookConfig } from "@storybook/react-webpack5";
 import path from "path";
 import { buildCssLoader } from "../build/loaders/buildCssLoader.ts";
 import { buildSvgLoader } from "../build/loaders/buildSvgLoader.ts";
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const config: StorybookConfig = {
   stories: ["../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
@@ -20,7 +23,7 @@ const config: StorybookConfig = {
   ],
   framework: "@storybook/react-webpack5",
   webpackFinal: async (config) => {
-    const srcPath = path.resolve(process.cwd(), "src");
+    const srcPath = path.resolve(__dirname, "..", "..", "src");
 
     config.resolve = config.resolve || {};
     config.resolve.modules = [...(config.resolve.modules || []), srcPath];
